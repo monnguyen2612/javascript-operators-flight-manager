@@ -12,7 +12,9 @@ function onCalculateNumberOfFlights() {
           " flight(s) to carry " + passengers + " passengers";
     } catch (error) {
         document.getElementById('flights').innerHTML = error; 
-    } 
+    } finally {
+        console.log(`${passengers} passengers, capacity: ${capacity} `)
+    }
 }
 
 function onCalculateTotalFinalPrice(object) {
@@ -72,6 +74,7 @@ function onDistributePassengers() {
     let businessSeatsPerFlight = parseInt(document.getElementById("businessSeatsPerFlight").value);
     let economySeatsPerFlight = parseInt(document.getElementById("economySeatsPerFlight").value);
 
+    debugger
     let distributedPassengers = Passengers().distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, 
                                            nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight);
 
