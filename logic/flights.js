@@ -1,8 +1,8 @@
 function Flights() {
     const calculateNumberOfFlights = (passengers, capacity) => {
-        if(Number.isInteger(passengers))
+        if(!Number.isInteger(passengers) || passengers < 0)
            throw new Error('The number of passengers must be a positive integer value');
-        if(Number.isInteger(capacity))
+        if(!Number.isInteger(capacity) || capacity < 0)
            throw new Error('The capacity of the flight must be a positive integer value');
         return Math.ceil(passengers/capacity);
     }

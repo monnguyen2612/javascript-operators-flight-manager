@@ -9,6 +9,8 @@ function Passengers() {
         }
     }
     const distributeAllSeatsToAllPassengers = (vipPassengers, regurlarPassengers, flights, busSeats, ecoSeats) => {
+        busSeats *= flights;
+        ecoSeats *= flights;
         const a = {
             vipPassengersWithBusinessSeats: 0,
             vipPassengersWithEconomySeats: 0,
@@ -19,7 +21,7 @@ function Passengers() {
             a.vipPassengersWithBusinessSeats = vipPassengers;
             if (regurlarPassengers > busSeats - vipPassengers) {
                 a.regularPassengersWithBusinessSeats = busSeats - vipPassengers;
-                a.regularPassengersWithEconomySeats = ecoSeats;
+                regurlarPassengers>ecoSeats?a.regularPassengersWithEconomySeats = ecoSeats - a.regularPassengersWithBusinessSeats:a.regularPassengersWithEconomySeats = regurlarPassengers - a.regularPassengersWithBusinessSeats;
             } else {
                 a.regularPassengersWithBusinessSeats = regurlarPassengers
                 a.regularPassengersWithEconomySeats = 0;
@@ -34,7 +36,7 @@ function Passengers() {
             a.vipPassengersWithBusinessSeats =  busSeats;
             a.vipPassengersWithEconomySeats =  vipPassengers - busSeats;
             a.regularPassengersWithBusinessSeats = 0;
-            a.regularPassengersWithEconomySeats = regurlarPassengers - a.vipPassengersWithEconomySeats;
+            a.regularPassengersWithEconomySeats = Math.min(ecoSeats - a.vipPassengersWithEconomySeats, regurlarPassengers)
         }
         return a
     }
