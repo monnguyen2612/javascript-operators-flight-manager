@@ -16,19 +16,25 @@ function Passengers() {
             regularPassengersWithEconomySeats: 0,
         };
         if (busSeats - vipPassengers > 0){
-            vip_with_bus_seats = vipPassengers
-            if (busSeats - vipPassengers - regurlarPassengers > 0)
-                regular_with_bus_seats = regurlarPassengers
-            else {
-                regular_with_bus_seats = regurlarPassengers - busSeats - vipPassengers;
-                vip_with_eco_seats = 0
+            a.vipPassengersWithBusinessSeats = vipPassengers;
+            if (regurlarPassengers > busSeats - vipPassengers) {
+                a.regularPassengersWithBusinessSeats = busSeats - vipPassengers;
+                a.regularPassengersWithEconomySeats = ecoSeats;
+            } else {
+                a.regularPassengersWithBusinessSeats = regurlarPassengers
+                a.regularPassengersWithEconomySeats = 0;
             }
-        }
-        else {
+        } else if (busSeats - vipPassengers === 0) {
+            a.vipPassengersWithBusinessSeats = vipPassengers;
+            if (ecoSeats - regurlarPassengers > 0)
+                a.regularPassengersWithEconomySeats = regurlarPassengers;
+            else 
+                a.regularPassengersWithEconomySeats = ecoSeats;
+        } else {
             a.vipPassengersWithBusinessSeats =  busSeats;
             a.vipPassengersWithEconomySeats =  vipPassengers - busSeats;
             a.regularPassengersWithBusinessSeats = 0;
-            a.regularPassengersWithEconomySeats = regurlarPassengers;
+            a.regularPassengersWithEconomySeats = regurlarPassengers - a.vipPassengersWithEconomySeats;
         }
         return a
     }

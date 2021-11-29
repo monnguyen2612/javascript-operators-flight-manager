@@ -74,7 +74,6 @@ function onDistributePassengers() {
     let businessSeatsPerFlight = parseInt(document.getElementById("businessSeatsPerFlight").value);
     let economySeatsPerFlight = parseInt(document.getElementById("economySeatsPerFlight").value);
 
-    debugger
     let distributedPassengers = Passengers().distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers, 
                                            nrOfFlights, businessSeatsPerFlight, economySeatsPerFlight);
 
