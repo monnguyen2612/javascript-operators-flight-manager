@@ -9,6 +9,22 @@ function Util() {
     const calculateTotalNumberOfPassengers = (passengers) => {
         return passengers.reduce((acc,cur) => acc + cur, 0)
     }
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers}
+
+    const checkInput = (input) => {
+        if(typeof input === 'Number') {
+            throw new Error()
+        }
+    }
+
+    const calculateTotalDistance = (distances) => {
+        return distances.reduce((cur, acc) => cur + acc, 0)
+    }
+
+    const calculateBonusPoints = (distancesB, distancesE, busBonus, ecoBonus) => {
+        busPoints = calculateTotalDistance(distancesB)*busBonus;
+        ecoPoints = calculateTotalDistance(distancesE)*ecoBonus;
+        return busPoints + ecoPoints;
+    }
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput, calculateTotalDistance, calculateBonusPoints}
 }
 module.exports = Util();
