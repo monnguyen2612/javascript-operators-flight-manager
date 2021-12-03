@@ -1,3 +1,4 @@
+"use strict"
 function Util() {
     const calculateTotalDistributedPassengers = (passengers) => {
         let sum = 0;
@@ -11,18 +12,22 @@ function Util() {
     }
 
     const checkInput = (input) => {
-        if(typeof input === 'Number') {
-            throw new Error()
+        if(typeof input !== 'number') {
+            throw new Error('The input should be a number')
+        }
+        else if(input == "") {
+            throw new Error('The input should not be empty')
         }
     }
 
     const calculateTotalDistance = (distances) => {
-        return distances.reduce((cur, acc) => cur + acc, 0)
+        distances = distances.filter(x => x > 0);
+        return distances.reduce((cur, acc) => cur + acc, 0);
     }
 
-    const calculateBonusPoints = (distancesB, distancesE, busBonus, ecoBonus) => {
-        busPoints = calculateTotalDistance(distancesB)*busBonus;
-        ecoPoints = calculateTotalDistance(distancesE)*ecoBonus;
+    const calculateBonusPoints  = (distancesB, distancesE, busBonus, ecoBonus) => {
+        let busPoints = calculateTotalDistance(distancesB)*busBonus/100;
+        let ecoPoints = calculateTotalDistance(distancesE)*ecoBonus/100;
         return busPoints + ecoPoints;
     }
     return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput, calculateTotalDistance, calculateBonusPoints}

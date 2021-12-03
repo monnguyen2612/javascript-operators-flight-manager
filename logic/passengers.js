@@ -1,3 +1,4 @@
+"use strict"
 function Passengers() {
     const checkFlightCapacity = (capacity, passengers) => {
         totalPassengers = passengers.reduce((a,c) => a + c, 0);

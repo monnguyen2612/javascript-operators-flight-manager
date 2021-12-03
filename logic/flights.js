@@ -1,3 +1,4 @@
+"use strict"
 function Flights() {
     const calculateNumberOfFlights = (passengers, capacity) => {
         if(!Number.isInteger(passengers) || passengers < 0)
